@@ -28,7 +28,7 @@ DTFT IS A DIRAC TRAIN WITH SPIKES SPACED BY SUBSAMPLING FREQUENCY IS THE INVERSE
 # PARAMETERS BEING PASSED INTO THE GAUSSIAN PULSE CLASS AND FUNCTION
 
 mu = 1 # MU = MEAN OF GAUSSIAN PULSE
-sigma = 0.1 # SIGMA = VARIANCE OF GAUSSIAN PULSE
+sigma = 0.0001 # SIGMA = VARIANCE OF GAUSSIAN PULSE
 f_s = 40000 # FS = SAMPLING FREQUENCY
 f_ss = 4000 #FSS = SUBSAMPLING FREQUENCY
 T = 2 # T = DURATION OF SIGNAL OR TOTAL OBSERVATION PERIOD
@@ -49,7 +49,7 @@ x_s, x_delta = subsample_obj.solve()
 fig, axs = plt.subplots(2)
 axs[0].grid()
 axs[1].grid()
-fig.suptitle('QUESTON 2.2: Original signal and subsampled signal' )
+fig.suptitle('QUESTION 2.2: Original signal and subsampled signal' )
 fig.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=0.6)
 axs[0].plot(t, x)
 axs[0].set_xlabel('Time (s)')
@@ -82,7 +82,7 @@ DFT_x_delta = dft(x_delta, f_s)
 fig, axs = plt.subplots(2)
 axs[0].grid()
 axs[1].grid()
-fig.suptitle('QUESTON 2.3: DFT of original signal and subsampled signal' )
+fig.suptitle('QUESTION 2.3: DFT of original signal and subsampled signal' )
 fig.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=0.6)
 axs[0].plot(freqs_c, abs(X_c))
 axs[0].set_xlabel('Frequency (Hz)')
@@ -130,14 +130,14 @@ x_s, x_delta = subsample_obj.solve_prefiltering()
 DFT_x = dft(x, f_s)
 [_, _, freqs_c, X_c] = DFT_x.solve_using_numpy_fft()
 
-DFT_x_delta = dft(x_delta, f_s)
+DFT_x_delta = dft(x_delta, f_ss)
 [_, _, _, X_delta_c] = DFT_x_delta.solve_using_numpy_fft()
 
 # DISPLAY GRAPH OF DFT OF ORIGINAL SIGNAL AND PRE FILTERED + SUBSAMPLED SIGNAL
 fig, axs = plt.subplots(2)
 axs[0].grid()
 axs[1].grid()
-fig.suptitle('QUESTON 2.4 AND 2.5: DFT of original signal and prefiltered + subsampled signal' )
+fig.suptitle('QUESTION 2.4 AND 2.5: DFT of original signal and prefiltered + subsampled signal' )
 fig.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=0.6)
 axs[0].plot(freqs_c, abs(X_c))
 axs[0].set_xlabel('Frequency (Hz)')
@@ -148,13 +148,11 @@ axs[1].set_ylabel('DFT')
 plt.savefig('signal_and_prefiltered_freq_'+ str(sigma) + '.png')
 plt.show()
 
-
 # Problem 2.6 (second instance)
 # Reconstruct
 
 reconstruct_obj = reconstruct(x_s, 1/f_s, 1/f_ss)
 x_r = reconstruct_obj.solve()
-
 
 # Plot
 fig, axs = plt.subplots(2)
@@ -166,6 +164,7 @@ axs[0].plot(t, x)
 axs[0].set_xlabel('Time (s)')
 axs[0].set_ylabel('Signal')
 axs[1].plot(t, x_r)
+#axs[1].plot(t, x_r)
 axs[1].set_xlabel('Time (s)')
 axs[1].set_ylabel('Signal')
 plt.savefig('signal_and_reconstructed_no_loss_time_'+ str(sigma) + '.png')
