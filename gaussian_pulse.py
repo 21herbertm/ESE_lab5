@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb 19 17:24:02 2021
-
-@author: Luana Ruiz
+ESE 224
+LAB_5
+MELANIE HERBERT, ALINA HO
 """
 
 import numpy as np
 
 class gaussian_pulse(object):
-    """
-    Generates a gaussian pulse signal
-    Arguments:
-        mu, sigma: mean and variance of the Gaussian pulse
-        T: duration of the signal (int)
-        fs: sampling frequncy (int)
-    """
+
+# MU = MEAN OF GAUSSIAN PULSE
+# SIGMA = VARIANCE OF GAUSSIAN PULSE
+# FS = SAMPLING FREQUENCY
+# T = DURATION OF SIGNAL
 
     def __init__(self, mu, sigma, T, fs):
         self.N = np.int(np.floor( T * fs))

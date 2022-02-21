@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb 19 19:05:41 2021
-
-@author: Luana Ruiz
+ESE 224
+RECONSTRUCTION CLASS
 """
+
+###############################################################################
+############################ Q U E S T I O N 2.6 ##############################
+###############################################################################
 
 import numpy as np
 from dft import dft
@@ -26,7 +29,7 @@ class reconstruct():
         step = np.int(self.tau/self.T_s)
         x[0::step] = self.x_s
         DFT_obj = dft(x,self.f_s)
-        [_,_,f_c,X_c] = DFT_obj.solve3()
+        [_,_,f_c,X_c] = DFT_obj.solve_using_numpy_fft()
         fmax = self.nu/2
         index_min  = np.min(np.where(f_c >= -fmax)[0])
         index_max = np.max(np.where(f_c <= fmax)[0])
