@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Feb  8 13:43:38 2021
-
-@author: Luana Ruiz
-"""
+'''
+ORIGNIAL FROM LAB ESEPENN224
+UPDATED FROM MHERBERT
+'''
 
 import numpy as np
 import cmath
